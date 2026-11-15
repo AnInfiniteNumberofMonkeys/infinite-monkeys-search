@@ -172,7 +172,7 @@ class IMSearch_Element_Results extends \Bricks\Element {
 			'group'       => 'display',
 			'label'       => esc_html__( 'Show "View" button', 'imsearch' ),
 			'type'        => 'checkbox',
-			'description' => esc_html__( 'A button-styled label beside the price. The whole result stays the link.', 'imsearch' ),
+			'description' => esc_html__( 'A button-styled label at the right of the result (in .imsearch-result-aside). The whole result stays the link.', 'imsearch' ),
 		);
 		$this->controls['buttonText'] = array(
 			'group'          => 'display',
@@ -183,19 +183,6 @@ class IMSearch_Element_Results extends \Bricks\Element {
 			'placeholder'    => esc_html__( 'View', 'imsearch' ),
 			'required'       => array( 'showButton', '=', true ),
 		);
-		$this->controls['buttonLayout'] = array(
-			'group'       => 'display',
-			'label'       => esc_html__( 'Button position', 'imsearch' ),
-			'type'        => 'select',
-			'inline'      => true,
-			'options'     => array(
-				'row'    => esc_html__( 'Right of the price', 'imsearch' ),
-				'column' => esc_html__( 'Below the price', 'imsearch' ),
-			),
-			'placeholder' => esc_html__( 'Right of the price', 'imsearch' ),
-			'required'    => array( 'showButton', '=', true ),
-		);
-		$this->controls['buttonGap']         = $this->style( 'display', esc_html__( 'Space between price and button', 'imsearch' ), 'number', 'gap', '.imsearch-result-aside', array( 'required' => array( 'showButton', '=', true ) ) );
 		$this->controls['buttonTypography']  = $this->style( 'display', esc_html__( 'Button typography', 'imsearch' ), 'typography', 'font', '.imsearch-result-button', array( 'required' => array( 'showButton', '=', true ) ) );
 		$this->controls['buttonBackground']  = $this->style( 'display', esc_html__( 'Button background', 'imsearch' ), 'color', 'background-color', '.imsearch-result-button', array( 'required' => array( 'showButton', '=', true ) ) );
 		$this->controls['buttonBorder']      = $this->style( 'display', esc_html__( 'Button border', 'imsearch' ), 'border', 'border', '.imsearch-result-button', array( 'required' => array( 'showButton', '=', true ) ) );
@@ -254,8 +241,8 @@ class IMSearch_Element_Results extends \Bricks\Element {
 		$this->controls['contentSep'] = array(
 			'group'       => 'item',
 			'type'        => 'separator',
-			'label'       => esc_html__( 'Content (text + price/button)', 'imsearch' ),
-			'description' => esc_html__( 'Styles .imsearch-result-content, which wraps the title/excerpt and the price/button.', 'imsearch' ),
+			'label'       => esc_html__( 'Content (text + button)', 'imsearch' ),
+			'description' => esc_html__( 'Styles .imsearch-result-content, which wraps the text (title, price, excerpt) and the View button.', 'imsearch' ),
 		);
 		$this->controls['contentDirection'] = $this->style( 'item', esc_html__( 'Direction', 'imsearch' ), 'direction', 'flex-direction', '.imsearch-result-content' );
 		$this->controls['contentAlign']     = $this->style( 'item', esc_html__( 'Align items', 'imsearch' ), 'align-items', 'align-items', '.imsearch-result-content' );
@@ -322,11 +309,7 @@ class IMSearch_Element_Results extends \Bricks\Element {
 			)
 		);
 
-		$classes = IMSearch_Render::results_classes( $args );
-		if ( $args['show_button'] && isset( $s['buttonLayout'] ) && 'column' === $s['buttonLayout'] ) {
-			$classes[] = 'imsearch-results--button-below';
-		}
-		$this->set_attribute( '_root', 'class', $classes );
+		$this->set_attribute( '_root', 'class', IMSearch_Render::results_classes( $args ) );
 		$this->set_attribute( '_root', 'data-imsearch-results', IMSearch_Render::results_config( $args ) );
 		$this->set_attribute( '_root', 'data-imsearch-id', $args['id'] );
 		if ( $args['for'] ) {
