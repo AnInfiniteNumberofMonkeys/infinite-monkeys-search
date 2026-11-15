@@ -328,6 +328,9 @@
 					row.appendChild(sku);
 				}
 				body.appendChild(row);
+				if (self.has('price') && item.price) {
+					body.appendChild(priceNode(item.price));
+				}
 				if (self.has('excerpt') && item.excerpt) {
 					var ex = el('span', 'imsearch-result-excerpt');
 					appendHighlighted(ex, item.excerpt, words);
@@ -335,17 +338,11 @@
 				}
 				content.appendChild(body);
 
-				var hasPrice = self.has('price') && item.price;
-				if (hasPrice || self.opts.button) {
+				if (self.opts.button) {
 					var aside = el('span', 'imsearch-result-aside');
-					if (hasPrice) {
-						aside.appendChild(priceNode(item.price));
-					}
-					if (self.opts.button) {
-						var btn = el('span', 'imsearch-result-button', self.opts.button);
-						btn.setAttribute('aria-hidden', 'true');
-						aside.appendChild(btn);
-					}
+					var btn = el('span', 'imsearch-result-button', self.opts.button);
+					btn.setAttribute('aria-hidden', 'true');
+					aside.appendChild(btn);
 					content.appendChild(aside);
 				}
 				a.appendChild(content);
