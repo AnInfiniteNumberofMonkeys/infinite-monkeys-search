@@ -336,7 +336,7 @@ class IMSearch_Admin {
 				<li><code>types="product,page,post"</code> — <?php esc_html_e( 'post types to show, in this order', 'imsearch' ); ?></li>
 				<li><code>show_taxonomies="product_cat,product_brand"</code> — <?php esc_html_e( 'show matching terms as results', 'imsearch' ); ?></li>
 				<li><code>image="yes"</code> <code>price="yes"</code> <code>excerpt="no"</code> <code>sku="no"</code> <code>headings="yes"</code> — <?php esc_html_e( 'headings="no" hides the group headings', 'imsearch' ); ?></li>
-				<li><code>view_button="yes"</code> <code>view_text="View"</code> — <?php esc_html_e( 'a "View" button beside the price (the whole result is the link)', 'imsearch' ); ?></li>
+				<li><code>view_button="yes"</code> <code>view_text="View"</code> — <?php esc_html_e( 'a "View" button at the right of each result (the whole result is the link)', 'imsearch' ); ?></li>
 				<li><code>orderby="relevance|title|date|modified|price|menu_order"</code> <code>order="desc|asc"</code></li>
 			</ul>
 			<p><?php esc_html_e( 'Example:', 'imsearch' ); ?> <code>[imsearch placeholder="Search the collection" types="product,page" excerpt="yes" sku="yes"]</code></p>
