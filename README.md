@@ -97,6 +97,7 @@ Deleting the plugin from WordPress removes its tables, options and scheduled eve
 
 ## Changelog
 
+- **1.0.7**: The price is now inside `.imsearch-result-body` (after the title row, before the excerpt); `.imsearch-result-aside` holds only the View button. Removed the "Button position" and "Space between price and button" controls.
 - **1.0.6**: Wrapper `div.imsearch-result-content` around each result's text (`.imsearch-result-body`) and price/button (`.imsearch-result-aside`), with direction, alignment and gap controls in the Search results element
 - **1.0.5**: Automatic updates from GitHub releases (Plugin Update Checker)
 - **1.0.4**: "View" button option for results (label, styling, position)
