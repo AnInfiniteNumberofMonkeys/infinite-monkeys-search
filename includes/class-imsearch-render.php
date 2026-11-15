@@ -246,19 +246,15 @@ class IMSearch_Render {
 				$out .= '<span class="imsearch-result-sku">(' . esc_html__( 'SKU', 'imsearch' ) . ': 000' . $i . ')</span>';
 			}
 			$out .= '</span>';
+			if ( $a['show_price'] ) {
+				$out .= '<span class="imsearch-result-price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>99.00</bdi></span></span>';
+			}
 			if ( $a['show_excerpt'] ) {
 				$out .= '<span class="imsearch-result-excerpt">Lorem <strong class="imsearch-highlight">ipsum</strong> dolor sit amet, consectetur adipiscing elit. Quisque gravida lacus nec diam porttitor pharetra.</span>';
 			}
 			$out .= '</span>';
-			if ( $a['show_price'] || $a['show_button'] ) {
-				$out .= '<span class="imsearch-result-aside">';
-				if ( $a['show_price'] ) {
-					$out .= '<span class="imsearch-result-price"><span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">$</span>99.00</bdi></span></span>';
-				}
-				if ( $a['show_button'] ) {
-					$out .= '<span class="imsearch-result-button" aria-hidden="true">' . esc_html( $a['button_text'] ) . '</span>';
-				}
-				$out .= '</span>';
+			if ( $a['show_button'] ) {
+				$out .= '<span class="imsearch-result-aside"><span class="imsearch-result-button" aria-hidden="true">' . esc_html( $a['button_text'] ) . '</span></span>';
 			}
 			$out .= '</div></a>';
 		}
