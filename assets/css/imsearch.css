@@ -525,15 +525,8 @@
 	text-align: right;
 }
 
-.imsearch-results--button-below .imsearch-result-aside {
-	flex-direction: column;
-	align-items: flex-end;
-	gap: 6px;
-}
-
 .imsearch-result-price {
 	white-space: nowrap;
-	text-align: right;
 }
 
 .imsearch-result-button {
